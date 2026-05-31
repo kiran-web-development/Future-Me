@@ -1,6 +1,6 @@
 # Future-Me-APP 🚀
 
-An AI-powered Android application that helps you plan and prepare for your future self using Google's Gemini API.
+An `AI-powered Android application` that helps you plan and prepare for your future self using Google's Gemini API.
 
 ## About This Project
 
@@ -65,6 +65,35 @@ Before you begin, ensure you have the following installed:
 
 ---
 
+
+## Screenshots
+
+### Home Screen - Welcome Interface
+`Welcoming interface` that greets users with the app's main purpose. This is the first screen users see when `launching Future-Me-APP`, setting the tone for an intuitive and engaging user experience.
+
+<img width="1080" height="2400" alt="Home Screen Welcome Interface" src="https://github.com/user-attachments/assets/ae3c21d2-c6e7-46e2-a593-80c31d417c5d" />
+
+### Main Chat Interface - Input Screen
+The `primary interaction screen` where users can input their questions and prompts to the AI. Features a `clean chat interface` with text input field and send button for seamless communication with the `Gemini AI`.
+
+<img width="1080" height="2400" alt="Main Chat Interface - Input Screen" src="https://github.com/user-attachments/assets/83405c3e-1a1a-41a7-a8dc-79c43b4eecf6" />
+
+### AI Response Display - Future Insights
+Shows the `AI-generated response` and personalized insights about `your future planning`. The app displays detailed recommendations and thoughtful guidance powered by `Google's Gemini API` to help you prepare for your future.
+
+<img width="1080" height="2400" alt="AI Response Display - Future Insights" src="https://github.com/user-attachments/assets/c3887fa9-74e8-4816-9a6a-afa810372428" />
+
+### Planning Suggestions - Goals & Milestones
+Displays `suggested goals` and `milestones for your future self`. The AI provides actionable recommendations and `structured planning` advice to help you achieve your long-term objectives.
+
+<img width="1080" height="2400" alt="Planning Suggestions - Goals & Milestones" src="https://github.com/user-attachments/assets/2db9281d-91ae-41bb-91d3-0a5bac71f202" />
+
+### Advanced Features - Detailed Analysis
+Shows `detailed analysis` and comprehensive `breakdown of planning recommendations`. Provides in-depth insights with step-by-step guidance for implementing your future plans effectively.
+
+<img width="1080" height="2400" alt="Advanced Features - Detailed Analysis" src="https://github.com/user-attachments/assets/c61d8f3b-3728-4b7c-b27b-dd12f1adbe37" />
+---
+
 ## Troubleshooting
 
 ### Build Fails with Signing Config Error
@@ -121,35 +150,6 @@ cd Future-Me-APP
 
 ---
 
-## Screenshots
-
-### Home Screen - Welcome Interface
-Welcoming interface that greets users with the app's main purpose. This is the first screen users see when launching Future-Me-APP, setting the tone for an intuitive and engaging user experience.
-
-<img width="1080" height="2400" alt="Home Screen Welcome Interface" src="https://github.com/user-attachments/assets/ae3c21d2-c6e7-46e2-a593-80c31d417c5d" />
-
-### Main Chat Interface - Input Screen
-The primary interaction screen where users can input their questions and prompts to the AI. Features a clean chat interface with text input field and send button for seamless communication with the Gemini AI.
-
-<img width="1080" height="2400" alt="Main Chat Interface - Input Screen" src="https://github.com/user-attachments/assets/83405c3e-1a1a-41a7-a8dc-79c43b4eecf6" />
-
-### AI Response Display - Future Insights
-Shows the AI-generated response and personalized insights about your future planning. The app displays detailed recommendations and thoughtful guidance powered by Google's Gemini API to help you prepare for your future.
-
-<img width="1080" height="2400" alt="AI Response Display - Future Insights" src="https://github.com/user-attachments/assets/c3887fa9-74e8-4816-9a6a-afa810372428" />
-
-### Planning Suggestions - Goals & Milestones
-Displays suggested goals and milestones for your future self. The AI provides actionable recommendations and structured planning advice to help you achieve your long-term objectives.
-
-<img width="1080" height="2400" alt="Planning Suggestions - Goals & Milestones" src="https://github.com/user-attachments/assets/2db9281d-91ae-41bb-91d3-0a5bac71f202" />
-
-### Advanced Features - Detailed Analysis
-Shows detailed analysis and comprehensive breakdown of planning recommendations. Provides in-depth insights with step-by-step guidance for implementing your future plans effectively.
-
-<img width="1080" height="2400" alt="Advanced Features - Detailed Analysis" src="https://github.com/user-attachments/assets/c61d8f3b-3728-4b7c-b27b-dd12f1adbe37" />
-
----
-
 ## Support
 
 If you encounter any issues or have questions:
@@ -166,4 +166,4 @@ This project is provided as-is. Modify and use as needed for your purposes.
 
 ---
 
-*Last updated: May 31, 2026*
+
