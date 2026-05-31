@@ -124,6 +124,7 @@ class FutureMeViewModel(application: Application) : AndroidViewModel(application
         }
 
         viewModelScope.launch {
+            com.example.util.SoundSynthesizer.playTimelineChime()
             _uiState.value = FutureMeUiState.Loading("Analyzing your current coordinates...")
             
             val systemStylePrompt = """
@@ -184,6 +185,7 @@ class FutureMeViewModel(application: Application) : AndroidViewModel(application
                 }
 
                 if (parsedResult != null) {
+                    com.example.util.SoundSynthesizer.playChatReceiveSound()
                     latestResponse = parsedResult
                     _uiState.value = FutureMeUiState.Success(parsedResult)
                 } else {
@@ -203,6 +205,8 @@ class FutureMeViewModel(application: Application) : AndroidViewModel(application
     fun sendChatMessage(questionText: String) {
         val currentQuestion = questionText.trim()
         if (currentQuestion.isEmpty() || _isChatLoading.value) return
+
+        com.example.util.SoundSynthesizer.playChatSendSound()
 
         val profile = latestResponse ?: return
 
@@ -275,6 +279,7 @@ class FutureMeViewModel(application: Application) : AndroidViewModel(application
 
                 val finalHistory = _chatHistory.value.toMutableList()
                 if (!replyText.isNullOrEmpty()) {
+                    com.example.util.SoundSynthesizer.playChatReceiveSound()
                     finalHistory.add(ChatMessage(sender = "FutureMe", text = replyText))
                 } else {
                     finalHistory.add(ChatMessage(sender = "FutureMe", text = "FutureMe could not respond right now. Try again."))

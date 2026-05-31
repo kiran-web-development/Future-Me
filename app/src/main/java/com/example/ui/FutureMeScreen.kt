@@ -123,7 +123,10 @@ fun FutureMeScreen(
                 is FutureMeUiState.Error -> {
                     ErrorSection(
                         message = state.errorMsg,
-                        onBack = { viewModel.resetToForm() }
+                        onBack = { 
+                            com.example.util.SoundSynthesizer.playClickSound()
+                            viewModel.resetToForm() 
+                        }
                     )
                 }
             }
@@ -160,7 +163,10 @@ fun FormInputSection(viewModel: FutureMeViewModel) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
-                    onClick = { viewModel.navigateToHome() },
+                    onClick = { 
+                        com.example.util.SoundSynthesizer.playClickSound()
+                        viewModel.navigateToHome() 
+                    },
                     modifier = Modifier.testTag("back_to_home_button")
                 ) {
                     Icon(
@@ -175,7 +181,10 @@ fun FormInputSection(viewModel: FutureMeViewModel) {
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
                     color = AccentCyan,
-                    modifier = Modifier.clickable { viewModel.navigateToHome() }
+                    modifier = Modifier.clickable { 
+                        com.example.util.SoundSynthesizer.playClickSound()
+                        viewModel.navigateToHome() 
+                    }
                 )
             }
         }
@@ -276,7 +285,10 @@ fun FormInputSection(viewModel: FutureMeViewModel) {
                 ToneSelectionGrid(
                     selectedTone = selectedTone,
                     options = viewModel.toneOptions,
-                    onSelect = { viewModel.tone.value = it }
+                    onSelect = { 
+                        com.example.util.SoundSynthesizer.playClickSound()
+                        viewModel.tone.value = it 
+                    }
                 )
             }
         }
@@ -292,6 +304,7 @@ fun FormInputSection(viewModel: FutureMeViewModel) {
 
             Button(
                 onClick = {
+                    com.example.util.SoundSynthesizer.playClickSound()
                     keyboardController?.hide()
                     viewModel.generateFutureMe()
                 },
@@ -660,20 +673,41 @@ fun ResultSection(
     onStartChat: () -> Unit
 ) {
     var showChatMode by remember { mutableStateOf(false) }
+    var isTyping by remember { mutableStateOf(true) }
     val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        delay(2500)
+        isTyping = false
+    }
 
     if (showChatMode) {
         ChatSection(viewModel = viewModel, onBack = { showChatMode = false })
     } else {
-        Column(modifier = Modifier.fillMaxSize()) {
-            // Scrollable central report body
-            LazyColumn(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(horizontal = 20.dp),
-                contentPadding = PaddingValues(top = 16.dp, bottom = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
+        AnimatedContent(
+            targetState = isTyping,
+            transitionSpec = {
+                fadeIn(tween(600)) togetherWith fadeOut(tween(300))
+            },
+            label = "typing_anim"
+        ) { typing ->
+            if (typing) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    TypingIndicator()
+                }
+            } else {
+                Column(modifier = Modifier.fillMaxSize()) {
+                    // Scrollable central report body
+                    LazyColumn(
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(horizontal = 20.dp),
+                        contentPadding = PaddingValues(top = 16.dp, bottom = 24.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
                 item {
                     Column(
                         modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
@@ -915,7 +949,10 @@ fun ResultSection(
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     IconButton(
-                        onClick = { viewModel.copyResultsToClipboard(context) },
+                        onClick = { 
+                            com.example.util.SoundSynthesizer.playClickSound()
+                            viewModel.copyResultsToClipboard(context) 
+                        },
                         modifier = Modifier
                             .background(SlateDivider, CircleShape)
                             .size(48.dp)
@@ -928,7 +965,10 @@ fun ResultSection(
                     }
 
                     Button(
-                        onClick = { viewModel.resetToForm() },
+                        onClick = { 
+                            com.example.util.SoundSynthesizer.playClickSound()
+                            viewModel.resetToForm() 
+                        },
                         modifier = Modifier
                             .weight(1f)
                             .height(48.dp),
@@ -945,7 +985,10 @@ fun ResultSection(
                     }
 
                     Button(
-                        onClick = { showChatMode = true },
+                        onClick = { 
+                            com.example.util.SoundSynthesizer.playClickSound()
+                            showChatMode = true 
+                        },
                         modifier = Modifier
                             .weight(1.2f)
                             .height(48.dp)
@@ -965,6 +1008,8 @@ fun ResultSection(
             }
         }
     }
+}
+}
 }
 
 // ==========================================
@@ -1001,7 +1046,10 @@ fun ChatSection(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(
-                onClick = onBack,
+                onClick = { 
+                    com.example.util.SoundSynthesizer.playClickSound()
+                    onBack() 
+                },
                 modifier = Modifier
                     .background(SlateDivider, CircleShape)
                     .size(40.dp)
@@ -1300,7 +1348,10 @@ fun ErrorSection(message: String, onBack: () -> Unit) {
         Spacer(modifier = Modifier.height(32.dp))
 
         Button(
-            onClick = onBack,
+            onClick = { 
+                com.example.util.SoundSynthesizer.playClickSound()
+                onBack() 
+            },
             colors = ButtonDefaults.buttonColors(containerColor = SlateDivider, contentColor = TextPrimary),
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier.height(44.dp).padding(horizontal = 16.dp)
@@ -1505,6 +1556,7 @@ fun HomeSection(viewModel: FutureMeViewModel) {
 
             Button(
                 onClick = {
+                    com.example.util.SoundSynthesizer.playClickSound()
                     viewModel.navigateToForm()
                 },
                 interactionSource = interactionSource,
@@ -1539,4 +1591,41 @@ fun HomeSection(viewModel: FutureMeViewModel) {
     }
 }
 
+@Composable
+fun TypingIndicator(modifier: Modifier = Modifier) {
+    val infiniteTransition = rememberInfiniteTransition(label = "dots")
+    val alpha1 by infiniteTransition.animateFloat(
+        initialValue = 0f, targetValue = 1f,
+        animationSpec = infiniteRepeatable(tween(600), RepeatMode.Reverse),
+        label = "dot1"
+    )
+    val alpha2 by infiniteTransition.animateFloat(
+        initialValue = 0f, targetValue = 1f,
+        animationSpec = infiniteRepeatable(tween(600, delayMillis = 200), RepeatMode.Reverse),
+        label = "dot2"
+    )
+    val alpha3 by infiniteTransition.animateFloat(
+        initialValue = 0f, targetValue = 1f,
+        animationSpec = infiniteRepeatable(tween(600, delayMillis = 400), RepeatMode.Reverse),
+        label = "dot3"
+    )
 
+    Row(
+        modifier = modifier.fillMaxWidth().padding(32.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "FutureMe is finalizing your message",
+            color = AccentCyan.copy(alpha = 0.8f),
+            fontSize = 14.sp,
+            fontStyle = FontStyle.Italic,
+            modifier = Modifier.padding(end = 8.dp)
+        )
+        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            Box(modifier = Modifier.size(6.dp).alpha(alpha1).background(AccentCyan, CircleShape))
+            Box(modifier = Modifier.size(6.dp).alpha(alpha2).background(AccentCyan, CircleShape))
+            Box(modifier = Modifier.size(6.dp).alpha(alpha3).background(AccentCyan, CircleShape))
+        }
+    }
+}
