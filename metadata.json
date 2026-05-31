@@ -1,0 +1,6 @@
+{
+  "name": "FutureMe",
+  "description": "An AI-powered personal reflection product where your future self speaks directly to your current self, generating guidance and holding simulated dynamic follow-up conversations using Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
